@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import Header from "../Components/Header";
 import Slider from "../Components/Slider";
 import ProductionHouse from "../Components/ProductionHouse";
@@ -14,18 +14,18 @@ function Home() {
 
   if (!user) {
     setIsRedirected(true);
-    router.push("/login");
+    router.push("/");
     return null;
   }
 
   return (
-    <div>
+    <>
       <Header />
       <NavBarPhone />
       <Slider />
       <ProductionHouse />
       <GenreMovieList />
-    </div>
+    </>
   );
 }
 
