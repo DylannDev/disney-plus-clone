@@ -6,6 +6,7 @@ import ProductionHouse from "../Components/ProductionHouse";
 import GenreMovieList from "../Components/GenreMovieList";
 import NavBarPhone from "../Components/NavBarPhone";
 import { useRouter } from "next/navigation";
+import { UserAuth } from "../context/AuthContext";
 
 function Home() {
   const { user, setIsRedirected } = UserAuth();

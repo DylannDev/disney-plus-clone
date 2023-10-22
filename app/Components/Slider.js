@@ -5,7 +5,6 @@ import Image from "next/image";
 import { nanoid } from "nanoid";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original";
-const screenWidth = window.innerWidth;
 
 function Slider() {
   const [movieList, setMovieList] = useState([]);
@@ -21,9 +20,12 @@ function Slider() {
     });
   };
 
+  const screenWidth = window.innerWidth;
+
   const sliderRight = (element) => {
     element.scrollLeft += screenWidth - 110;
   };
+
   const sliderLeft = (element) => {
     element.scrollLeft -= screenWidth - 110;
   };
