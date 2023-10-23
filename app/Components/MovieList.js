@@ -6,14 +6,16 @@ import MovieCard from "./MovieCard";
 import { nanoid } from "nanoid";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 import HorizontalMovieCard from "./HorizontalMovieCard";
-const screenWidth = window.innerWidth;
 
 function MovieList({ genreId, indexValue }) {
   const [movieList, setMovieList] = useState([]);
+  const [screenWidth, setScreenWidth] = useState(null);
   const elementRef = useRef();
 
   useEffect(() => {
     getMovieByGenre();
+    const getScreenWidth = window.innerWidth;
+    setScreenWidth(getScreenWidth);
   }, []);
 
   const getMovieByGenre = () => {
@@ -22,7 +24,6 @@ function MovieList({ genreId, indexValue }) {
     });
   };
 
-  console.log(movieList);
   const sliderRight = (element) => {
     element.scrollLeft += screenWidth - 128;
   };

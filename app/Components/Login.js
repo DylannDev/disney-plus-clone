@@ -24,10 +24,10 @@ function Login() {
     }
   };
 
-  // if (user) {
-  //   router.push("/home");
-  //   return null;
-  // }
+  if (user) {
+    router.push("/home");
+    return null;
+  }
 
   console.log(user);
   return (

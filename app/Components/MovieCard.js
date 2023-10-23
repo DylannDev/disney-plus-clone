@@ -1,12 +1,17 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 const IMAGE_BASE_URL = "http://image.tmdb.org/t/p/original";
 import { IoPlay, IoAddSharp, IoHelpSharp } from "react-icons/io5";
-const screenWidth = window.innerWidth;
 
 function MovieCard({ movie }) {
   const [hover, setHover] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(null);
+
+  useEffect(() => {
+    const getScreenWidth = window.innerWidth;
+    setScreenWidth(getScreenWidth);
+  }, []);
 
   return screenWidth >= 768 && hover ? (
     <div className="fade-in-left">
