@@ -55,6 +55,10 @@ export const productionHouseList = [
     img: "/nationalG.png",
     video: "/national-geographic.mp4",
   },
+  {
+    img: "/Star.png",
+    video: "/star-video.mp4",
+  },
 ];
 
 export const genresList = [
