@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -39,7 +40,7 @@ function ProfilePicture() {
 
   return (
     user && (
-      <div className="flex flex-col h-[calc(100vh-93px)] justify-center items-center gap-12 px-12">
+      <div className="flex flex-col h-full justify-center items-center gap-12 px-12">
         <div>
           <h2 class="text-2xl sm:text-3xl text-white font-medium pb-6">
             Modifier la photo de profil
