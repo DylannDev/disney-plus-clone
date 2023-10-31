@@ -5,8 +5,5 @@ import { useRouter } from "next/navigation";
 import Login from "./Components/Login";
 
 export default function App() {
-  const { user } = UserAuth();
-  const router = useRouter();
-
-  return <>{user ? router.push("/home") : <Login />}</>;
+  return <Login />;
 }

@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { useRouter } from "next/navigation";
 
 export const AuthContext = createContext();
 
@@ -17,16 +18,17 @@ export const AuthContextProvider = ({ children }) => {
   const [isRedirected, setIsRedirected] = useState(false);
   const [logoutButtonClicked, setLogoutButtonClicked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  // Update Profile Picture
+  const [updatePicture, setUpdatePicture] = useState(null);
   const [selectedPicture, setSelectedPicture] = useState(
     useEffect(() => {
       JSON.parse(localStorage.getItem("SELECTED_PICTURE"));
     }, [])
   );
-  const [updatePicture, setUpdatePicture] = useState(null);
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
 
   if (selectedPicture === undefined) {
     setSelectedPicture(0);

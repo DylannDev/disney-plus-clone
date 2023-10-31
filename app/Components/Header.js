@@ -18,11 +18,12 @@ function Header() {
   const {
     user,
     logOut,
-    setLogoutButtonClicked,
     setLoading,
     updatePicture,
+    setIsRedirected,
     setUpdatePicture,
     selectedPicture,
+    setLogoutButtonClicked,
   } = UserAuth();
 
   const router = useRouter();
@@ -32,18 +33,15 @@ function Header() {
     try {
       await setTimeout(() => {
         logOut();
-        setLogoutButtonClicked(true);
+        router.push("/");
       }, 1000);
+      setLogoutButtonClicked(true);
       setToggleProfile(false);
       setLoading(true);
     } catch (error) {
       console.log(error);
     }
   };
-
-  if (updatePicture === null) {
-    setUpdatePicture(selectedPicture);
-  }
 
   return (
     <div
@@ -62,7 +60,7 @@ function Header() {
           className="w-[80px]"
         />
       </div>
-      {pathname === "/home" && (
+      {pathname === "/home" && user && (
         <>
           <div className="hidden min-[1100px]:flex gap-8">
             {menu.map((menuItem) => (
@@ -124,7 +122,7 @@ function Header() {
           </div>
         </>
       )}
-      {pathname === "/profile-picture" && (
+      {pathname === "/profile-picture" && user && (
         <button
           className="flex items-center gap-2 text-white text-sm cursor-pointer underline underline-offset-8 "
           onClick={router.back}

@@ -13,39 +13,41 @@ import { UserAuth } from "../context/AuthContext";
 function Home() {
   const { user, loading, setIsRedirected, setLoading } = UserAuth();
   const router = useRouter();
-  console.log(user);
 
   useEffect(() => {
-    setTimeout(() => {
+    const checkAuthentication = async () => {
+      await new Promise((resolve) => setTimeout(resolve, 3000));
       setLoading(false);
-    }, 2000);
-  }, []);
+    };
 
-  if (!user) {
-    setIsRedirected(true);
-    router.push("/");
-    return null;
-  }
+    checkAuthentication();
+
+    if (!user) {
+      setIsRedirected(true);
+      router.push("/");
+    }
+  }, [user]);
 
   return (
     <>
-      {loading ? (
-        <div className="grid place-content-center h-[calc(100vh-118px)]">
-          <Image
-            src="/loader.gif"
-            width={500}
-            height={500}
-            alt="logo loader"
-            className="w-[40px]"
-          />
-        </div>
-      ) : (
-        <>
-          <Slider />
-          <ProductionHouse />
-          <GenreMovieList />
-        </>
-      )}
+      {user &&
+        (loading ? (
+          <div className="grid place-content-center h-[calc(100vh-118px)]">
+            <Image
+              src="/loader.gif"
+              width={500}
+              height={500}
+              alt="logo loader"
+              className="w-[40px]"
+            />
+          </div>
+        ) : (
+          <>
+            <Slider />
+            <ProductionHouse />
+            <GenreMovieList />
+          </>
+        ))}
     </>
   );
 }

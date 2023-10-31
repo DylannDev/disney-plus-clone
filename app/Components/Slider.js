@@ -23,8 +23,6 @@ function Slider() {
     });
   };
 
-  console.log(screenWidth);
-
   const sliderRight = (element) => {
     element.scrollLeft += screenWidth - 110;
   };
