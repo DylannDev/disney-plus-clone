@@ -40,9 +40,9 @@ function ProfilePicture() {
 
   return (
     user && (
-      <div className="flex flex-col h-full justify-center items-center gap-12 px-12">
+      <div className="flex flex-col h-full justify-center items-center gap-12 px-6">
         <div>
-          <h2 class="text-2xl sm:text-3xl text-white font-medium pb-6">
+          <h2 class="text-2xl sm:text-3xl text-white font-medium pb-6 mt-12">
             Modifier la photo de profil
           </h2>
           <h4 class="text-lg sm:text-xl text-slate-300 text-center">
