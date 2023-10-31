@@ -17,14 +17,20 @@ export const AuthContextProvider = ({ children }) => {
   const [isRedirected, setIsRedirected] = useState(false);
   const [logoutButtonClicked, setLogoutButtonClicked] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [selectedPicture, setSelectedPicture] = useState(() => {
-    return JSON.parse(localStorage.getItem("SELECTED_PICTURE"));
-  });
+  const [selectedPicture, setSelectedPicture] = useState(
+    useEffect(() => {
+      JSON.parse(localStorage.getItem("SELECTED_PICTURE"));
+    }, [])
+  );
   const [updatePicture, setUpdatePicture] = useState(null);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+
+  if (selectedPicture === undefined) {
+    setSelectedPicture(0);
+  }
 
   const handleLogin = (e) => {
     e.preventDefault();
